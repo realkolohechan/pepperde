@@ -8,6 +8,7 @@ choice=$(zenity --list \
     "Open Openbox Config" \
     "Screenshot" \
     "About PepperDE" \
+    "Report A Problem" \
     "Start Desktop")
 
 case "$choice" in
@@ -28,6 +29,9 @@ case "$choice" in
         ;;
     "About PepperDE")
         zenity --info --text="PepperDE — A lightweight, custom desktop environment."
+        ;;
+    "Report A Problem")
+        xdg-open https://github.com/realkolohechan/pepperde/issues
         ;;
     "Start Desktop")
         exit 0
