@@ -1,0 +1,36 @@
+#!/bin/bash
+
+choice=$(zenity --list \
+    --title="Welcome to PepperDE" \
+    --column="Action" \
+    "Change Wallpaper" \
+    "Open Tint2 Config" \
+    "Open Openbox Config" \
+    "Screenshot" \
+    "About PepperDE" \
+    "Start Desktop")
+
+case "$choice" in
+    "Change Wallpaper")
+        file=$(zenity --file-selection --title="Choose Wallpaper")
+        [ -n "$file" ] && nitrogen --set-zoom-fill "$file" --save
+        ;;
+    "Open Tint2 Config")
+        tint2conf &
+        ;;
+    "Open Openbox Config")
+        obconf &
+        ;;
+    "Screenshot")
+        mkdir -p ~/Pictures
+        scrot ~/Pictures/screenshot-%Y-%m-%d-%H-%M-%S.png &
+        zenity --info --text="Screenshot saved to ~/Pictures"
+        ;;
+    "About PepperDE")
+        zenity --info --text="PepperDE — A lightweight, custom desktop environment."
+        ;;
+    "Start Desktop")
+        exit 0
+        ;;
+esac
+

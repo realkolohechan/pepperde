@@ -1,0 +1,27 @@
+#!/bin/bash
+
+APP="/usr/bin/kitty"   # change this to your app
+
+while true; do
+    # Start the app
+    DISPLAY=:0 LIBGL_ALWAYS_SOFTWARE=true GALLIUM_DRIVER=llvmpipe $APP &
+    pid=$!
+
+    # Wait for the app to close
+    wait $pid
+
+    # Ask the user what to do
+    zenity --question \
+        --title="Application Closed" \
+        --text="The application has closed. Do you want to log out?"
+
+    if [ $? -eq 0 ]; then
+        # User clicked "Yes" → log out in a display-manager-agnostic way
+        loginctl terminate-session "$XDG_SESSION_ID"
+        exit 0
+    else
+        # User clicked "No" → reopen the app
+        continue
+    fi
+done
+

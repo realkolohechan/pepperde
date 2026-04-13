@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=PepperDE
+Comment=Lightweight Pepper Desktop Environment
+Exec=/usr/bin/pepperde-session
+Type=Application
+DesktopNames=PepperDE
+Icon=pepperde
+

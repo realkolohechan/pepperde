@@ -1,0 +1,20 @@
+#!/bin/bash
+
+if ! pgrep Xorg >/dev/null; then
+    Xorg -retro &
+    sleep 1
+fi
+
+DISPLAY=:0 openbox &
+
+DISPLAY=:0 tint2 &
+
+DISPLAY=:0 nitrogen --restore &
+
+/usr/pepper-files/kittysession &
+
+DISPLAY=:0 nemo
+
+sleep 3
+
+DISPLAY=:0 /usr/bin/pepperdeconf
