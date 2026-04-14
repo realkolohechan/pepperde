@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=waypepper
+Comment=A wayland version of Pepper
+Exec=sway
+Type=Application
+

@@ -1,0 +1,22 @@
+#!/bin/bash
+
+choice=$(zenity --list \
+    --title="Welcome to PepperDE... wayland" \
+    --column="Action" \
+    "Change Wallpaper" \
+    "Report A Problem" \
+    "Start Desktop")
+
+case "$choice" in
+    "Change Wallpaper")
+        file=$(zenity --file-selection --title="Choose Wallpaper")
+        [ -n "$file" ] && nitrogen --set-zoom-fill "$file" --save
+        ;;
+    "Report A Problem")
+        xdg-open https://github.com/realkolohechan/pepperde/issues
+        ;;
+    "Start Desktop")
+        exit 0
+        ;;
+esac
+

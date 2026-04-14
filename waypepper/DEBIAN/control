@@ -1,0 +1,9 @@
+Package: waypepper
+Version: 1.0
+Section: misc
+Priority: optional
+Architecture: all
+Maintainer: Your Name <you@example.com>
+Depends: sway, waybar, fuzzel, mako-notifier, foot, swaybg, xdg-desktop-portal-wlr, seatd, swayidle, swaylock, zenity
+Description: A wayland version of pepper.
+
