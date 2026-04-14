@@ -5,14 +5,12 @@ if ! pgrep Xorg >/dev/null; then
     sleep 1
 fi
 
-DISPLAY=:0 openbox &
+export DISPLAY=:0
 
-DISPLAY=:0 tint2 &
+dbus-run-session openbox &
 
-DISPLAY=:0 nitrogen --restore &
-
-DISPLAY=:0 /usr/bin/pepperdeconf
-
+tint2 &
+nitrogen --restore &
+/usr/bin/pepperdeconf &
 /usr/pepper-files/kittysession &
-
-DISPLAY=:0 nemo
+nemo &
